@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --color-champagne: #E8D6BC;
+  --color-rose: #D9B4AD;
+  --color-nude: #F7F0E9;
+  --color-espresso: #38251F;
+  --color-gold: #B99764;
+  --color-gold-deep: #8A6A3B;
+  --color-ink: #171413;
+  --color-pearl: #FFFCF8;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #F7F0E9;
+    color: #38251F;
+    overflow-x: clip;
+  }
+
+  body {
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+}
+
+/* Subtle luxury paper grain overlay */
+.paper-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
+}
+
+/* Marquee drift */
+@keyframes editorial-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-editorial-marquee {
+  animation: editorial-marquee 42s linear infinite;
+}
+
+/* Circular seal rotation */
+@keyframes slow-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-slow-spin {
+  animation: slow-spin 26s linear infinite;
+}
+
+/* Subtle gold sheen on hover */
+.gold-sheen-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-sheen-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%) skewX(-18deg);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(232, 214, 188, 0.28) 50%,
+    transparent 100%
+  );
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.gold-sheen-btn:hover::after {
+  transform: translateX(120%) skewX(-18deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-editorial-marquee,
+  .animate-slow-spin {
+    animation: none !important;
+  }
+
+  .gold-sheen-btn::after {
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Espaço Rosana Couto",
+  "description": "Espaço Rosana Couto — Beleza e cuidados capilares de alto padrão. Alisamento capilar, botox capilar, cauterização e penteados com atendimento personalizado.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
